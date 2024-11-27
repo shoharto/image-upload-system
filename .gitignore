@@ -1,0 +1,35 @@
+# Node.js modules
+/node_modules/
+
+# Environment files
+.env
+
+# Logs
+*.log
+logs/
+*.log.*
+
+# Specific log files
+combined.log
+
+# Uploads directory (files uploaded by users)
+uploads/
+
+# OS-specific files
+.DS_Store         # macOS
+Thumbs.db         # Windows
+
+# npm package lock files (optional, if you don't want to include the lock file)
+package-lock.json
+yarn.lock
+
+# IDE/editor-specific files
+.vscode/
+.idea/
+
+# Optional: Ignore coverage reports if you are using a testing framework
+coverage/
+
+# Optional: Ignore any build directories if you are using a build tool
+dist/
+build/
