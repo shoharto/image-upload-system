@@ -2,7 +2,7 @@ const multer = require('multer');
 const path = require('path');
 const Joi = require('joi');
 const fs = require('fs');
-const { insertImagePath } = require('../models/imageModel');
+const { insertImagePath , getAllImages} = require('../models/imageModel');
 const logger = require('../utils/logger');
 
 // Set up Multer storage
@@ -64,4 +64,23 @@ const uploadImage = async (req, res) => {
   }
 };
 
-module.exports = { upload, uploadImage };
+// Controller for getting all image paths
+
+const getAllImagesController = async (req, res) => {
+  try {
+    const images = await getAllImages();
+    if (images.length === 0) {
+      return res.status(404).json({ message: 'No images found' });
+    }
+    res.status(200).json({
+      message: 'Images retrieved successfully',
+      images,
+    });
+  } catch (error) {
+    logger.error('Error fetching images: ' + error.message);
+    res.status(500).json({ error: 'Failed to fetch images from the database' });
+  }
+};
+
+
+module.exports = { upload, uploadImage , getAllImagesController };
